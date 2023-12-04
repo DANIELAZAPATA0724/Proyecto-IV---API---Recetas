@@ -1,0 +1,191 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #edeaea;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 10%;
+  height: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-weight: bold;
+  text-decoration-color: #ac4545;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+a {
+  text-decoration: none; /*Así le quitamos el subrayado a los enlaces*/
+  color: #000; /*Así le quitamos el color azul a los enlaces*/
+}
+
+a:hover {
+  color: #953c3c;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ac4545;
+}
+
+main {
+  text-align: center;
+  margin: 20px;
+  align-items: center;
+}
+
+#recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+  margin-bottom: 20px;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#recipe-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ccc;
+}
+
+#recipe-details {
+  padding: 20px;
+}
+
+#recipe-name {
+  margin-top: 0;
+  color: #922525;
+  font-weight: bold;
+  text-decoration:underline;
+}
+
+#ingredients-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#search-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  flex-grow: 1;
+  padding: 10px;
+}
+
+#search-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.buttons-container {
+  text-align: center;
+  padding: 0 0 2% 0px;
+}
+
+.buttons-container button {
+  margin-top: 10px;
+}
+
+#search-button,
+#next-button {
+  background-color: #ac4545;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#search-button:hover,
+#next-button:hover {
+  background-color: #4c4848b7;
+}
+
+footer {
+  background-color: #edeaea;
+  color: rgb(171, 86, 86);
+  text-align: center;
+  padding: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background-color: #edeaea;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    margin-right: 0;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #8d89898f;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+#instructions-container {
+  display: none;
+  margin-top: 2%;
+}
+
+#instructions {
+  text-align: left;
+}
+
+.instructions-button {
+  margin: 3%;
+  border-radius: 4px;
+  background-color: #ac4545;
+  color: white;
+  padding: 1%;
+  border: none;
+  cursor: pointer;
+}
+
+.instructions-button:hover {
+  background-color: #4c4848b7;
+}
