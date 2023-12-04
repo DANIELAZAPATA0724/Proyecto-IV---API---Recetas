@@ -1,4 +1,4 @@
-# Proyecto-IV---API---Recetas
+# Proyecto-IV-API-Recetas
 
 <h1>Hola Soy Daniela Zapata</h1>
 
