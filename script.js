@@ -105,6 +105,4 @@ document.addEventListener("DOMContentLoaded", () => {
       instructions.textContent = recipe.strInstructions;
       instructionsContainer.style.display = "block";
   }
-
-  // ... (Tu código JavaScript existente) ...
 });
