@@ -5,8 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextButton = document.getElementById("next-button");
   const searchButton = document.getElementById("search-button");
   const searchInput = document.getElementById("search-input");
+  const instructionsButton = document.getElementById("instructions-button");
+  const instructionsContainer = document.getElementById(
+    "instructions-container"
+  );
+  const instructions = document.getElementById("instructions");
   const hamburgerMenu = document.querySelector(".hamburger-menu");
   const navLinks = document.querySelector(".nav-links");
+
+  let currentRecipe;
 
   nextButton.addEventListener("click", () => {
     getRandomRecipe();
@@ -16,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchTerm = searchInput.value.trim();
     if (searchTerm !== "") {
       searchRecipeByName(searchTerm);
+    }
+  });
+
+  instructionsButton.addEventListener("click", () => {
+    if (currentRecipe) {
+      toggleInstructionsVisibility();
     }
   });
 
@@ -33,7 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         const recipe = data.meals[0];
+        currentRecipe = recipe;
         updateRecipeCard(recipe);
+        // Oculta las instrucciones al cambiar de receta
+        instructionsContainer.style.display = "none";
       })
       .catch((error) => console.error("Error fetching data:", error));
   }
@@ -46,7 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         const recipe = data.meals ? data.meals[0] : null;
         if (recipe) {
+          currentRecipe = recipe;
           updateRecipeCard(recipe);
+          // Oculta las instrucciones al cambiar de receta
+          instructionsContainer.style.display = "none";
         } else {
           console.log("No se encontró ninguna receta con ese nombre.");
         }
@@ -75,34 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return ingredients.join("");
   }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ... (Tu código JavaScript existente) ...
-
-  const instructionsButton = document.getElementById("instructions-button");
-  const instructionsContainer = document.getElementById("instructions-container");
-  const instructions = document.getElementById("instructions");
-
-  instructionsButton.addEventListener("click", () => {
-      fetchRecipeInstructions();
-  });
-
-  // Función para obtener las instrucciones de preparación desde la API
-  function fetchRecipeInstructions() {
-      const apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
-      fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
-              const recipe = data.meals[0];
-              updateRecipeInstructions(recipe);
-          })
-          .catch(error => console.error("Error fetching instructions:", error));
-  }
-
-  // Función para mostrar las instrucciones en la tarjeta de detalles de receta
-  function updateRecipeInstructions(recipe) {
-      instructions.textContent = recipe.strInstructions;
+  // Función para alternar la visibilidad del contenedor de instrucciones
+  function toggleInstructionsVisibility() {
+    if (instructionsContainer.style.display === "none") {
+      instructions.textContent = currentRecipe.strInstructions;
       instructionsContainer.style.display = "block";
+    } else {
+      instructionsContainer.style.display = "none";
+    }
   }
 });
